@@ -32,7 +32,7 @@ resource "aws_subnet" "main" {
   }
 }
 
-resource "aws_instance" "ec2-be" {
+resource "aws_instance" "ec2-bee" {
   instance_type = var.instance_type
   ami = "ami-830c94e3"
   count = 3
