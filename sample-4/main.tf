@@ -26,7 +26,7 @@ resource "aws_instance" "app_server" {
   ami           = "ami-09d3b3274b6c5d4aa"
   instance_type = var.type
   tags = {
-    Name = "ExampleAppServerInstance-Uri"
+    Name = "ExampleAppServerInstance-pr"
   }
   
 #   lifecycle {
