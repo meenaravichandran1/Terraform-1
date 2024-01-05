@@ -1,48 +1,19 @@
 provider "aws" {
-  region     = var.region
-  access_key = var.access_key
-  secret_key = var.secret_key
+  region     = "us-east-1"
 }
 
-resource "aws_security_group" "sg-test" {
-  description = "dev_test security group allows ssh for everyone"
-  name        = "allow-ssh-${var.tag_name}"
-  ingress {
-    from_port   = 23
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+resource "aws_instance" "apptest" {
+  instance_type = "t2.nano"
+  ami           = "ami-0aa7d40eeae50c9a9"
 }
 
-resource "aws_instance" "jarService" {
-  ami = "ami-040ba316fc6ab09df"
+resource "aws_instance" "apptes6t" {
+  instance_type = "t2.nano"
+  ami           = "ami-0aa7d40eeae50c9a9"
 
-  instance_type   = "t2.micro"
-  key_name        = "cdp-test"
-  security_groups = [aws_security_group.sg-test.name]
- 
+  depends_on = [aws_instance.apptest]
 }
 
-output "security_group" {
-  value = [aws_security_group.sg-test.id]
-}
-
-output "region" {
-  value = var.region
-}
-
-output "instanceTags" {
-  value = aws_instance.jarService.tags
-}
-
-output "jarServiceTags" {
-  value = var.tag_name
-}
-
-output "dns" {
-  value = aws_instance.jarService.public_dns
-}
-output "vpc" {
-  value = aws_instance.jarService.vpc_security_group_ids
+output "apptest" {
+  value = aws_instance.apptest.id
 }
