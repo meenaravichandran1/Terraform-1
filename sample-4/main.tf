@@ -13,7 +13,7 @@ provider "aws" {
   region  = "us-east-1"
 }
 
-# data "aws_ami" "app_server" {
+# data "aws_ami" "app_server2" {
 #   filter {
 #     name = "image-id"
 #     values = ["ami-830c94e3"]
