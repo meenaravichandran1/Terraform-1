@@ -4,4 +4,4 @@ deploy:
   steps:
     terraformInit:
       before:
-        - 'echo Hello!!!'
+        - 'echo Hey!!!'
